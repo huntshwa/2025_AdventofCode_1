@@ -7,10 +7,10 @@ public class Main {
         System.out.println(read());
     }
 
-    public static int read() throws FileNotFoundException{
+    public static int read() throws FileNotFoundException {
 
-        //File f = new File("dialCombination.txt");
-        File f = new File("test.txt");
+        File f = new File("dialCombination.txt");
+        //File f = new File("test.txt");
         Scanner s = new Scanner(f);
 
         int dial = 50;
@@ -25,22 +25,21 @@ public class Main {
                 num *= -1;
             }
 
+            boolean startZero = dial == 0;
             dial += num;
-
-            //look at test case L5, it starts on 0 and runs a loop but doesn't pass 0
 
             while (dial > 99) {
                 dial -= 100;
-                if (dial != 0) count++;
+                count++;
             }
 
             while (dial < 0) {
                 dial += 100;
-                if (dial != 0) count++;
+                count++;
             }
 
             if (dial == 0) count++;
-
+            if (startZero) count--;
         }
         return count;
     }
